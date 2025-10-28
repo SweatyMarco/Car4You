@@ -1,47 +1,65 @@
-import { useState } from 'react';
-import { Input } from './ui/input';
-import { Label } from './ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-import { Checkbox } from './ui/checkbox';
-import { RadioGroup, RadioGroupItem } from './ui/radio-group';
-import { Slider } from './ui/slider';
-import { Textarea } from './ui/textarea';
-import { Button } from './ui/button';
-import { Card } from './ui/card';
-import { Calendar } from './ui/calendar';
-import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
-import { Calendar as CalendarIcon, Car, Users, Navigation, Box, Shield, Baby, CircleDollarSign, Leaf, Palette, Sparkles } from 'lucide-react';
-import { format } from 'date-fns';
-import { de } from 'date-fns/locale';
+import { useState } from "react";
+import { Input } from "./ui/input";
+import { Label } from "./ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
+import { Checkbox } from "./ui/checkbox";
+import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
+import { Slider } from "./ui/slider";
+import { Textarea } from "./ui/textarea";
+import { Button } from "./ui/button";
+import { Card } from "./ui/card";
+import { Calendar } from "./ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import {
+  Calendar as CalendarIcon,
+  Car,
+  Users,
+  Navigation,
+  Box,
+  Shield,
+  Baby,
+  CircleDollarSign,
+  Leaf,
+  Palette,
+  Sparkles,
+} from "lucide-react";
+import { format } from "date-fns";
+import { de } from "date-fns/locale";
 
 export function DesktopView() {
   const [pickupDate, setPickupDate] = useState<Date>();
   const [returnDate, setReturnDate] = useState<Date>();
   const [priceRange, setPriceRange] = useState([80]);
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedExtras, setSelectedExtras] = useState<string[]>([]);
-  const [priority, setPriority] = useState('');
+  const [priority, setPriority] = useState("");
 
   const categories = [
-    { id: 'city', name: 'City', icon: '🚗', description: 'Kompakt & wendig' },
-    { id: 'family', name: 'Family', icon: '🚙', description: 'Viel Platz' },
-    { id: 'suv', name: 'SUV', icon: '🚙', description: 'Geländetauglich' },
-    { id: 'sport', name: 'Sport', icon: '🏎️', description: 'Dynamisch' },
-    { id: 'ecar', name: 'E-Car', icon: '⚡', description: 'Elektrisch' },
+    { id: "city", name: "City", icon: "🚗", description: "Kompakt & wendig" },
+    { id: "family", name: "Family", icon: "🚙", description: "Viel Platz" },
+    { id: "suv", name: "SUV", icon: "🚙", description: "Geländetauglich" },
+    { id: "sport", name: "Sport", icon: "🏎️", description: "Dynamisch" },
+    { id: "ecar", name: "E-Car", icon: "⚡", description: "Elektrisch" },
   ];
 
   const extras = [
-    { id: 'kindersitz', label: 'Kindersitz', icon: Baby },
-    { id: 'zusatzfahrer', label: 'Zusatzfahrer', icon: Users },
-    { id: 'navi', label: 'Navigation', icon: Navigation },
-    { id: 'dachbox', label: 'Dachbox', icon: Box },
-    { id: 'vollkasko', label: 'Vollkasko', icon: Shield },
+    { id: "kindersitz", label: "Kindersitz", icon: Baby },
+    { id: "zusatzfahrer", label: "Zusatzfahrer", icon: Users },
+    { id: "navi", label: "Navigation", icon: Navigation },
+    { id: "dachbox", label: "Dachbox", icon: Box },
+    { id: "vollkasko", label: "Vollkasko", icon: Shield },
   ];
 
   const toggleExtra = (extraId: string) => {
-    setSelectedExtras(prev =>
+    setSelectedExtras((prev) =>
       prev.includes(extraId)
-        ? prev.filter(id => id !== extraId)
+        ? prev.filter((id) => id !== extraId)
         : [...prev, extraId]
     );
   };
@@ -51,7 +69,9 @@ export function DesktopView() {
       <div className="bg-white rounded-2xl shadow-xl p-8">
         <div className="mb-8 text-center">
           <h2 className="text-blue-600 mb-2">Desktop Layout</h2>
-          <p className="text-gray-600">Optimiert für effiziente Dateneingabe am Arbeitsplatz</p>
+          <p className="text-gray-600">
+            Optimiert für effiziente Dateneingabe am Arbeitsplatz
+          </p>
         </div>
 
         <form className="space-y-8">
@@ -71,16 +91,30 @@ export function DesktopView() {
                   </div>
                   <div>
                     <Label htmlFor="lastname">Nachname</Label>
-                    <Input id="lastname" placeholder="Mustermann" className="mt-1" />
+                    <Input
+                      id="lastname"
+                      placeholder="Mustermann"
+                      className="mt-1"
+                    />
                   </div>
                 </div>
                 <div>
                   <Label htmlFor="email">E-Mail</Label>
-                  <Input id="email" type="email" placeholder="max@beispiel.ch" className="mt-1" />
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="max@beispiel.ch"
+                    className="mt-1"
+                  />
                 </div>
                 <div>
                   <Label htmlFor="phone">Telefonnummer</Label>
-                  <Input id="phone" type="tel" placeholder="+41 79 123 45 67" className="mt-1" />
+                  <Input
+                    id="phone"
+                    type="tel"
+                    placeholder="+41 79 123 45 67"
+                    className="mt-1"
+                  />
                 </div>
               </div>
             </Card>
@@ -102,7 +136,9 @@ export function DesktopView() {
                           className="w-full justify-start mt-1"
                         >
                           <CalendarIcon className="mr-2 h-4 w-4" />
-                          {pickupDate ? format(pickupDate, 'dd.MM.yyyy', { locale: de }) : 'Datum wählen'}
+                          {pickupDate
+                            ? format(pickupDate, "dd.MM.yyyy", { locale: de })
+                            : "Datum wählen"}
                         </Button>
                       </PopoverTrigger>
                       <PopoverContent className="w-auto p-0">
@@ -144,7 +180,9 @@ export function DesktopView() {
                           className="w-full justify-start mt-1"
                         >
                           <CalendarIcon className="mr-2 h-4 w-4" />
-                          {returnDate ? format(returnDate, 'dd.MM.yyyy', { locale: de }) : 'Datum wählen'}
+                          {returnDate
+                            ? format(returnDate, "dd.MM.yyyy", { locale: de })
+                            : "Datum wählen"}
                         </Button>
                       </PopoverTrigger>
                       <PopoverContent className="w-auto p-0">
@@ -186,7 +224,7 @@ export function DesktopView() {
               <Car className="w-5 h-5" />
               Fahrzeugwahl
             </h3>
-            
+
             {/* Category Selection */}
             <div className="mb-6">
               <Label className="mb-3 block">Kategorie</Label>
@@ -198,13 +236,15 @@ export function DesktopView() {
                     onClick={() => setSelectedCategory(cat.id)}
                     className={`p-4 rounded-xl border-2 transition-all hover:shadow-md ${
                       selectedCategory === cat.id
-                        ? 'border-blue-500 bg-blue-50 shadow-md'
-                        : 'border-gray-200 bg-white hover:border-blue-300'
+                        ? "border-blue-500 bg-blue-50 shadow-md"
+                        : "border-gray-200 bg-white hover:border-blue-300"
                     }`}
                   >
                     <div className="text-3xl mb-2">{cat.icon}</div>
                     <div className="text-sm">{cat.name}</div>
-                    <div className="text-xs text-gray-500">{cat.description}</div>
+                    <div className="text-xs text-gray-500">
+                      {cat.description}
+                    </div>
                   </button>
                 ))}
               </div>
@@ -253,19 +293,28 @@ export function DesktopView() {
                     onClick={() => toggleExtra(extra.id)}
                     className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${
                       selectedExtras.includes(extra.id)
-                        ? 'border-cyan-500 bg-cyan-50'
-                        : 'border-gray-200 hover:border-cyan-300'
+                        ? "border-cyan-500 bg-cyan-50"
+                        : "border-gray-200 hover:border-cyan-300"
                     }`}
                   >
                     <div className="flex items-center justify-center mb-2">
-                      <Icon className={`w-8 h-8 ${selectedExtras.includes(extra.id) ? 'text-cyan-600' : 'text-gray-400'}`} />
+                      <Icon
+                        className={`w-8 h-8 ${
+                          selectedExtras.includes(extra.id)
+                            ? "text-cyan-600"
+                            : "text-gray-400"
+                        }`}
+                      />
                     </div>
                     <Checkbox
                       id={extra.id}
                       checked={selectedExtras.includes(extra.id)}
                       className="mx-auto block"
                     />
-                    <Label htmlFor={extra.id} className="text-center block mt-2 text-sm cursor-pointer">
+                    <Label
+                      htmlFor={extra.id}
+                      className="text-center block mt-2 text-sm cursor-pointer"
+                    >
                       {extra.label}
                     </Label>
                   </div>
@@ -284,7 +333,9 @@ export function DesktopView() {
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">CHF 40</span>
-                  <span className="text-2xl text-orange-600">CHF {priceRange[0]}</span>
+                  <span className="text-2xl text-orange-600">
+                    CHF {priceRange[0]}
+                  </span>
                   <span className="text-sm text-gray-600">CHF 120</span>
                 </div>
                 <Slider
@@ -295,7 +346,9 @@ export function DesktopView() {
                   step={5}
                   className="w-full"
                 />
-                <p className="text-xs text-gray-500">Pro Tag – ziehen Sie den Regler für Ihre Preisspanne</p>
+                <p className="text-xs text-gray-500">
+                  Pro Tag – ziehen Sie den Regler für Ihre Preisspanne
+                </p>
               </div>
             </Card>
 
@@ -310,28 +363,42 @@ export function DesktopView() {
                     <RadioGroupItem value="price" id="price" />
                     <Label htmlFor="price" className="cursor-pointer flex-1">
                       <span className="block">💰 Preis</span>
-                      <span className="text-xs text-gray-500">Bestes Angebot zählt</span>
+                      <span className="text-xs text-gray-500">
+                        Bestes Angebot zählt
+                      </span>
                     </Label>
                   </div>
                   <div className="flex items-center space-x-3 p-2 rounded hover:bg-purple-50">
                     <RadioGroupItem value="comfort" id="comfort" />
                     <Label htmlFor="comfort" className="cursor-pointer flex-1">
                       <span className="block">✨ Komfort</span>
-                      <span className="text-xs text-gray-500">Luxus & Ausstattung</span>
+                      <span className="text-xs text-gray-500">
+                        Luxus & Ausstattung
+                      </span>
                     </Label>
                   </div>
                   <div className="flex items-center space-x-3 p-2 rounded hover:bg-purple-50">
-                    <RadioGroupItem value="sustainability" id="sustainability" />
-                    <Label htmlFor="sustainability" className="cursor-pointer flex-1">
+                    <RadioGroupItem
+                      value="sustainability"
+                      id="sustainability"
+                    />
+                    <Label
+                      htmlFor="sustainability"
+                      className="cursor-pointer flex-1"
+                    >
                       <span className="block">🌱 Nachhaltigkeit</span>
-                      <span className="text-xs text-gray-500">Umweltfreundlich</span>
+                      <span className="text-xs text-gray-500">
+                        Umweltfreundlich
+                      </span>
                     </Label>
                   </div>
                   <div className="flex items-center space-x-3 p-2 rounded hover:bg-purple-50">
                     <RadioGroupItem value="design" id="design" />
                     <Label htmlFor="design" className="cursor-pointer flex-1">
                       <span className="block">🎨 Design</span>
-                      <span className="text-xs text-gray-500">Style & Ästhetik</span>
+                      <span className="text-xs text-gray-500">
+                        Style & Ästhetik
+                      </span>
                     </Label>
                   </div>
                 </div>
@@ -348,7 +415,9 @@ export function DesktopView() {
               rows={4}
               className="resize-none"
             />
-            <p className="text-xs text-gray-500 mt-2">Optional – teilen Sie uns besondere Anforderungen mit</p>
+            <p className="text-xs text-gray-500 mt-2">
+              Optional – teilen Sie uns besondere Anforderungen mit
+            </p>
           </Card>
 
           {/* Submit Button */}
@@ -361,18 +430,6 @@ export function DesktopView() {
             </Button>
           </div>
         </form>
-      </div>
-
-      {/* Design Notes */}
-      <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
-        <h4 className="text-blue-700 mb-2">💡 Desktop-Layout Highlights</h4>
-        <ul className="text-sm text-gray-700 space-y-1">
-          <li>✓ Zweispaltige Gruppierung für maximale Übersichtlichkeit (Luca: schneller Überblick)</li>
-          <li>✓ Visual Cards mit Icons für schnelle Orientierung</li>
-          <li>✓ Preisrahmen prominent dargestellt (Sophie: Budget im Blick)</li>
-          <li>✓ Farbcodierte Sektionen für klare visuelle Hierarchie</li>
-          <li>✓ Großzügige Abstände und Touch-freundliche Elemente</li>
-        </ul>
       </div>
     </div>
   );
