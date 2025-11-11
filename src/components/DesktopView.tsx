@@ -130,6 +130,7 @@ export function DesktopView() {
                     <Popover>
                       <PopoverTrigger asChild>
                         <Button
+                          type="button"
                           variant="outline"
                           className="w-full justify-start mt-1"
                         >
@@ -174,6 +175,7 @@ export function DesktopView() {
                     <Popover>
                       <PopoverTrigger asChild>
                         <Button
+                          type="button"
                           variant="outline"
                           className="w-full justify-start mt-1"
                         >
