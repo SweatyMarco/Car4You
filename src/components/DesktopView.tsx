@@ -41,7 +41,7 @@ export function DesktopView() {
   const categories = [
     { id: "city", name: "City", icon: "🚗", description: "Kompakt & wendig" },
     { id: "family", name: "Family", icon: "🚙", description: "Viel Platz" },
-    { id: "suv", name: "SUV", icon: "🚙", description: "Gelaendetauglich" },
+    { id: "suv", name: "SUV", icon: "🚙", description: "Geländetauglich" },
     { id: "sport", name: "Sport", icon: "🏎️", description: "Dynamisch" },
     { id: "ecar", name: "E-Car", icon: "⚡", description: "Elektrisch" },
   ];
@@ -66,9 +66,9 @@ export function DesktopView() {
     <div className="w-full max-w-6xl mx-auto">
       <div className="bg-white rounded-2xl shadow-xl p-8">
         <div className="mb-8 text-center">
-          <h2 className="text-blue-600 mb-2">Tom Bierstand</h2>
+          <h2 className="text-blue-600 mb-2">Car4You</h2>
           <p className="text-gray-600">
-            Optimiert fuer effiziente Dateneingabe am Arbeitsplatz
+            Optimiert für effiziente Dateneingabe am Arbeitsplatz
           </p>
         </div>
 
@@ -79,7 +79,7 @@ export function DesktopView() {
             <Card className="p-6 border-2 border-blue-100 bg-blue-50/30">
               <h3 className="text-blue-700 mb-4 flex items-center gap-2">
                 <Users className="w-5 h-5" />
-                Persoenliche Daten
+                Persönliche Daten
               </h3>
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
@@ -136,7 +136,7 @@ export function DesktopView() {
                           <CalendarIcon className="mr-2 h-4 w-4" />
                           {pickupDate
                             ? format(pickupDate, "dd.MM.yyyy", { locale: de })
-                            : "Datum waehlen"}
+                            : "Datum wählen"}
                         </Button>
                       </PopoverTrigger>
                       <PopoverContent className="w-auto p-0">
@@ -170,7 +170,7 @@ export function DesktopView() {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label>Rueckgabedatum</Label>
+                    <Label>Rückgabedatum</Label>
                     <Popover>
                       <PopoverTrigger asChild>
                         <Button
@@ -180,7 +180,7 @@ export function DesktopView() {
                           <CalendarIcon className="mr-2 h-4 w-4" />
                           {returnDate
                             ? format(returnDate, "dd.MM.yyyy", { locale: de })
-                            : "Datum waehlen"}
+                            : "Datum wählen"}
                         </Button>
                       </PopoverTrigger>
                       <PopoverContent className="w-auto p-0">
@@ -197,7 +197,7 @@ export function DesktopView() {
                     </Popover>
                   </div>
                   <div>
-                    <Label htmlFor="return-time">Rueckgabezeit</Label>
+                    <Label htmlFor="return-time">Rückgabezeit</Label>
                     <Select>
                       <SelectTrigger id="return-time" className="mt-1">
                         <SelectValue placeholder="Zeit" />
@@ -255,7 +255,7 @@ export function DesktopView() {
                 <Label htmlFor="transmission">Getriebe</Label>
                 <Select>
                   <SelectTrigger id="transmission" className="mt-1">
-                    <SelectValue placeholder="Waehlen Sie..." />
+                    <SelectValue placeholder="Wählen Sie..." />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="manual">Manuell</SelectItem>
@@ -267,7 +267,7 @@ export function DesktopView() {
                 <Label htmlFor="color">Farbe (optional)</Label>
                 <Select>
                   <SelectTrigger id="color" className="mt-1">
-                    <SelectValue placeholder="Keine Praeferenz" />
+                    <SelectValue placeholder="Keine Präferenz" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="black">Schwarz</SelectItem>
@@ -347,7 +347,7 @@ export function DesktopView() {
                   className="w-full"
                 />
                 <p className="text-xs text-gray-500">
-                  Pro Tag, ziehen Sie den Regler fuer Ihre Preisspanne
+                  Pro Tag, ziehen Sie den Regler für Ihre Preisspanne
                 </p>
               </div>
             </Card>
@@ -355,7 +355,7 @@ export function DesktopView() {
             <Card className="p-6 border-2 border-purple-100 bg-purple-50/30">
               <h3 className="text-purple-700 mb-4 flex items-center gap-2">
                 <Sparkles className="w-5 h-5" />
-                Ihre Prioritaet
+                Ihre Priorität
               </h3>
               <RadioGroup value={priority} onValueChange={setPriority}>
                 <div className="space-y-3">
@@ -364,7 +364,7 @@ export function DesktopView() {
                     <Label htmlFor="price" className="cursor-pointer flex-1">
                       <span className="block">💰 Preis</span>
                       <span className="text-xs text-gray-500">
-                        Bestes Angebot zaehlt
+                        Bestes Angebot zählt
                       </span>
                     </Label>
                   </div>
