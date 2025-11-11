@@ -25,8 +25,6 @@ import {
   Shield,
   Baby,
   CircleDollarSign,
-  Leaf,
-  Palette,
   Sparkles,
 } from "lucide-react";
 import { format } from "date-fns";
@@ -43,7 +41,7 @@ export function DesktopView() {
   const categories = [
     { id: "city", name: "City", icon: "🚗", description: "Kompakt & wendig" },
     { id: "family", name: "Family", icon: "🚙", description: "Viel Platz" },
-    { id: "suv", name: "SUV", icon: "🚙", description: "Geländetauglich" },
+    { id: "suv", name: "SUV", icon: "🚙", description: "Gelaendetauglich" },
     { id: "sport", name: "Sport", icon: "🏎️", description: "Dynamisch" },
     { id: "ecar", name: "E-Car", icon: "⚡", description: "Elektrisch" },
   ];
@@ -68,9 +66,9 @@ export function DesktopView() {
     <div className="w-full max-w-6xl mx-auto">
       <div className="bg-white rounded-2xl shadow-xl p-8">
         <div className="mb-8 text-center">
-          <h2 className="text-blue-600 mb-2">Desktop Layout</h2>
+          <h2 className="text-blue-600 mb-2">Tom Bierstand</h2>
           <p className="text-gray-600">
-            Optimiert für effiziente Dateneingabe am Arbeitsplatz
+            Optimiert fuer effiziente Dateneingabe am Arbeitsplatz
           </p>
         </div>
 
@@ -81,7 +79,7 @@ export function DesktopView() {
             <Card className="p-6 border-2 border-blue-100 bg-blue-50/30">
               <h3 className="text-blue-700 mb-4 flex items-center gap-2">
                 <Users className="w-5 h-5" />
-                Persönliche Daten
+                Persoenliche Daten
               </h3>
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
@@ -99,7 +97,7 @@ export function DesktopView() {
                   </div>
                 </div>
                 <div>
-                  <Label htmlFor="email">E-Mail</Label>
+                  <Label htmlFor="email">E Mail</Label>
                   <Input
                     id="email"
                     type="email"
@@ -138,7 +136,7 @@ export function DesktopView() {
                           <CalendarIcon className="mr-2 h-4 w-4" />
                           {pickupDate
                             ? format(pickupDate, "dd.MM.yyyy", { locale: de })
-                            : "Datum wählen"}
+                            : "Datum waehlen"}
                         </Button>
                       </PopoverTrigger>
                       <PopoverContent className="w-auto p-0">
@@ -146,7 +144,7 @@ export function DesktopView() {
                           mode="single"
                           selected={pickupDate}
                           onSelect={setPickupDate}
-                          disabled={(date) => date < new Date()}
+                          disabled={(date: Date) => date < new Date()}
                           locale={de}
                         />
                       </PopoverContent>
@@ -172,7 +170,7 @@ export function DesktopView() {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label>Rückgabedatum</Label>
+                    <Label>Rueckgabedatum</Label>
                     <Popover>
                       <PopoverTrigger asChild>
                         <Button
@@ -182,7 +180,7 @@ export function DesktopView() {
                           <CalendarIcon className="mr-2 h-4 w-4" />
                           {returnDate
                             ? format(returnDate, "dd.MM.yyyy", { locale: de })
-                            : "Datum wählen"}
+                            : "Datum waehlen"}
                         </Button>
                       </PopoverTrigger>
                       <PopoverContent className="w-auto p-0">
@@ -190,14 +188,16 @@ export function DesktopView() {
                           mode="single"
                           selected={returnDate}
                           onSelect={setReturnDate}
-                          disabled={(date) => date < (pickupDate || new Date())}
+                          disabled={(date: Date) =>
+                            date < (pickupDate || new Date())
+                          }
                           locale={de}
                         />
                       </PopoverContent>
                     </Popover>
                   </div>
                   <div>
-                    <Label htmlFor="return-time">Rückgabezeit</Label>
+                    <Label htmlFor="return-time">Rueckgabezeit</Label>
                     <Select>
                       <SelectTrigger id="return-time" className="mt-1">
                         <SelectValue placeholder="Zeit" />
@@ -228,7 +228,7 @@ export function DesktopView() {
             {/* Category Selection */}
             <div className="mb-6">
               <Label className="mb-3 block">Kategorie</Label>
-              <div className="grid grid-cols-5 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
                 {categories.map((cat) => (
                   <button
                     key={cat.id}
@@ -250,12 +250,12 @@ export function DesktopView() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <Label htmlFor="transmission">Getriebe</Label>
                 <Select>
                   <SelectTrigger id="transmission" className="mt-1">
-                    <SelectValue placeholder="Wählen Sie..." />
+                    <SelectValue placeholder="Waehlen Sie..." />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="manual">Manuell</SelectItem>
@@ -267,11 +267,11 @@ export function DesktopView() {
                 <Label htmlFor="color">Farbe (optional)</Label>
                 <Select>
                   <SelectTrigger id="color" className="mt-1">
-                    <SelectValue placeholder="Keine Präferenz" />
+                    <SelectValue placeholder="Keine Praeferenz" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="black">Schwarz</SelectItem>
-                    <SelectItem value="white">Weiß</SelectItem>
+                    <SelectItem value="white">Weiss</SelectItem>
                     <SelectItem value="silver">Silber</SelectItem>
                     <SelectItem value="blue">Blau</SelectItem>
                     <SelectItem value="red">Rot</SelectItem>
@@ -284,7 +284,7 @@ export function DesktopView() {
           {/* Section 3: Extras */}
           <Card className="p-6 border-2 border-cyan-100">
             <h3 className="text-cyan-700 mb-4">Extras (Mehrfachauswahl)</h3>
-            <div className="grid grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
               {extras.map((extra) => {
                 const Icon = extra.icon;
                 return (
@@ -347,7 +347,7 @@ export function DesktopView() {
                   className="w-full"
                 />
                 <p className="text-xs text-gray-500">
-                  Pro Tag – ziehen Sie den Regler für Ihre Preisspanne
+                  Pro Tag, ziehen Sie den Regler fuer Ihre Preisspanne
                 </p>
               </div>
             </Card>
@@ -355,7 +355,7 @@ export function DesktopView() {
             <Card className="p-6 border-2 border-purple-100 bg-purple-50/30">
               <h3 className="text-purple-700 mb-4 flex items-center gap-2">
                 <Sparkles className="w-5 h-5" />
-                Ihre Priorität
+                Ihre Prioritaet
               </h3>
               <RadioGroup value={priority} onValueChange={setPriority}>
                 <div className="space-y-3">
@@ -364,7 +364,7 @@ export function DesktopView() {
                     <Label htmlFor="price" className="cursor-pointer flex-1">
                       <span className="block">💰 Preis</span>
                       <span className="text-xs text-gray-500">
-                        Bestes Angebot zählt
+                        Bestes Angebot zaehlt
                       </span>
                     </Label>
                   </div>
@@ -373,7 +373,7 @@ export function DesktopView() {
                     <Label htmlFor="comfort" className="cursor-pointer flex-1">
                       <span className="block">✨ Komfort</span>
                       <span className="text-xs text-gray-500">
-                        Luxus & Ausstattung
+                        Luxus und Ausstattung
                       </span>
                     </Label>
                   </div>
@@ -397,7 +397,7 @@ export function DesktopView() {
                     <Label htmlFor="design" className="cursor-pointer flex-1">
                       <span className="block">🎨 Design</span>
                       <span className="text-xs text-gray-500">
-                        Style & Ästhetik
+                        Style und Aesthetik
                       </span>
                     </Label>
                   </div>
@@ -410,13 +410,13 @@ export function DesktopView() {
           <Card className="p-6 border-2 border-gray-100">
             <h3 className="text-gray-700 mb-4">Bemerkungen</h3>
             <Textarea
-              placeholder="Haben Sie besondere Wünsche oder Anmerkungen? (max. 250 Zeichen)"
+              placeholder="Haben Sie besondere Wuensche oder Anmerkungen? (max. 250 Zeichen)"
               maxLength={250}
               rows={4}
               className="resize-none"
             />
             <p className="text-xs text-gray-500 mt-2">
-              Optional – teilen Sie uns besondere Anforderungen mit
+              Optional, teilen Sie uns besondere Anforderungen mit
             </p>
           </Card>
 

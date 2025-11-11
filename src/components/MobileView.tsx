@@ -146,7 +146,7 @@ export function MobileView() {
                         mode="single"
                         selected={pickupDate}
                         onSelect={setPickupDate}
-                        disabled={(date) => date < new Date()}
+                        disabled={(date: Date) => date < new Date()}
                         locale={de}
                       />
                     </PopoverContent>
@@ -188,7 +188,9 @@ export function MobileView() {
                         mode="single"
                         selected={returnDate}
                         onSelect={setReturnDate}
-                        disabled={(date) => date < (pickupDate || new Date())}
+                        disabled={(date: Date) =>
+                          date < (pickupDate || new Date())
+                        }
                         locale={de}
                       />
                     </PopoverContent>
